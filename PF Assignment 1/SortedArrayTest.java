@@ -11,11 +11,11 @@ public class SortedArrayTest {
 		
 		int[] input = {1,2,3,4,5};
 		
-		int expected_output = 1;
+		int expected_Output = 1;
 		
-		int actual_output = SortedArray.sortedArray(input);
+		int actual_Output = SortedArray.sortedArray(input);
 		
-		assertEquals(expected_output, actual_output);
+		assertEquals(expected_Output, actual_Output);
 		
 	}
 

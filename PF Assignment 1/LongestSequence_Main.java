@@ -1,11 +1,8 @@
 /**
- * 
  *  PF-Session1 Assignment1
- *  
- *  
  */
-package PF_Session_1;
 
+package PF_Session_1;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -38,60 +35,41 @@ public class LongestSequence_Main {
 		}
 		
 	}
-	
 
 }
-
 
 class LongestSequence{
 	
 	//method to return LongestSequence from the input
 	 public static int[] longestSequence(int input[])
 	 {
-		 /*
-			index_start --> start index for longest 			sequence
-			
-			index_end --> end index for longest 				sequence
-			
-			length --> length of the longest sequence.
-
-
-		*/
-		 int start = 0, next = 1, length = 0;
-		 
-		 int index_start=start, index_end=next;
+		 int start = 0, next = 1, length = 0; 
+		 int index_Start=start, index_End=next;
 		 
 		 while(next<input.length){
 			
-			
-			 
 			 if(input[next]<=input[next-1]){
 				 
-				
-				 
 				 start = next;
-				 next = next+1;
-				 
+				 next = next+1; 
 			 }
+			 
 			 else{
 			
-			if (next-start+1>length){
-					 index_start = start;
-					 index_end = next;
+				 if (next-start+1>length){
+					 index_Start = start;
+					 index_End = next;
 					length = next-start+1;
 					 
-			}	 			
+				 	}		 			
 
 			 next++;
 			 }
 			
 		 }
 		 
-		 return Arrays.copyOfRange(input, index_start, 				index_end+1); // to get a part of aray input.
+		 return Arrays.copyOfRange(input, index_Start, index_End+1); // to get a part of aray input.
 		 
 	 }
 
-	
-	
-	
 }

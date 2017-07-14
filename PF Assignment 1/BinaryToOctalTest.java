@@ -9,10 +9,10 @@ public class BinaryToOctalTest {
 	@Test
 	public void convertBinaryToOctalTest() {
 		
-		int expected_output = 65;
-		int actual_output = BinaryToOctal.convertBinaryToOctal(110101);
+		int expected_Output = 65;
+		int actual_Output = BinaryToOctal.convertBinaryToOctal(110101);
 		
-		assertEquals(expected_output, actual_output);
+		assertEquals(expected_Output, actual_Output);
 		
 	}
 

@@ -1,11 +1,11 @@
 /**
- * 
  * PF-Session1	
 	Assignment5
- * 
  */
 
 package PF_Session_1;
+
+import java.util.Scanner;
 
 //Main Class
 public class SortedArray_Main {
@@ -14,7 +14,14 @@ public class SortedArray_Main {
 	public static void main(String[] args){
 		
 		//input array		
-		int[] arr = {1,2,3,4,5};
+		int[] arr = new int[10];
+		Scanner sc = new Scanner(System.in);
+		
+		for (int i=0;i<10;i++){
+			
+			arr[i] = sc.nextInt();
+			
+		}
 		
 		
 		int result = SortedArray.sortedArray(arr);	
@@ -23,9 +30,7 @@ public class SortedArray_Main {
 			
 		}
 		
-		
-		
-	}
+}
 
 
 class SortedArray{

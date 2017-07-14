@@ -2,13 +2,13 @@ package PF_Session_1;
 
 public class SortArray_Main {
 
-	
-	
 	public static void main (String args[]) {
 		int a[] = new int[]{2,5,7,9,12} , b[] = new int[] {1,2,4,5,7,11,12} , c[] = new int[25];
 		SortArray sa = new SortArray();
 		sa.sortArray(a,b,c);
-	}  }
+	}  
+	
+}
 
 class SortArray {
 	
@@ -16,8 +16,7 @@ class SortArray {
 	 int[] sortArray (int a[] , int b[] , int c[]) {
 		 
 		 for (k=0;k!=(a.length + b.length);k++) {
-			 
-			 
+			 			 
 			 if (a[i] == b[j]) {
 				 c[k] = a[i];
 				k++;
