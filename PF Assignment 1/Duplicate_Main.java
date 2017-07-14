@@ -10,8 +10,16 @@ public class Duplicate_Main {
 		Scanner sc = new Scanner(System.in);
 
 		for (int i = 0; i < input.length; i++) {
-			System.out.println("Enter the element");
-			input[i] = sc.nextInt();
+	
+			try{
+				System.out.println("Enter the element");
+				input[i] = sc.nextInt();
+			}catch(InputMisMatchException e){
+				
+				System.out.println('Input Error: '+e.getMessage());
+
+			}
+
 		}
 
 		dp.removeDuplicate(input); //calling function

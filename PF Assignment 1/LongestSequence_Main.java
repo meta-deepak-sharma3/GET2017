@@ -19,8 +19,15 @@ public class LongestSequence_Main {
 		Scanner sc = new Scanner(System.in);
 		
 		for (int i=0;i<arr.length;i++){
-			System.out.println("Enter the element");
-			arr[i] = sc.nextInt();
+			
+			try{			
+				System.out.println("Enter the element");
+				arr[i] = sc.nextInt();
+
+			}catch(InputMisMatchException e){
+				System.out.println('Input Error: '+e.getMessage());
+
+			}
 			
 			
 		}

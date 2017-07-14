@@ -9,12 +9,19 @@ import java.lang.Math;
 import java.util.Scanner;
 
 //Main class
-public class BinarToOctalMain {
+public class BinaryToOctalMain {
   
 	public static void main(String[] args)
   {
-		Scanner sc = new Scanner(System.in);
-		int number= sc.nextInt();  
+		try{
+			Scanner sc = new Scanner(System.in);
+			int number= sc.nextInt();  
+		}catch(InputMisMatchException e){
+			
+			System.out.println('Error Message: '+e.getMessage());
+		
+		}
+
 		
 		System.out.println(String.valueOf(BinaryToOctal.convertBinaryToOctal(number)));
   

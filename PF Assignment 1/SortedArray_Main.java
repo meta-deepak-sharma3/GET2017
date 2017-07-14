@@ -18,8 +18,12 @@ public class SortedArray_Main {
 		Scanner sc = new Scanner(System.in);
 		
 		for (int i=0;i<10;i++){
-			
-			arr[i] = sc.nextInt();
+
+			try{			
+				arr[i] = sc.nextInt();
+			}catch(InputMisMatchException e){
+				System.out.println('Input Error: '+e.getMessage());
+			}
 			
 		}
 		

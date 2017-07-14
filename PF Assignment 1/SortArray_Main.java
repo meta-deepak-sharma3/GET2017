@@ -3,7 +3,22 @@ package PF_Session_1;
 public class SortArray_Main {
 
 	public static void main (String args[]) {
-		int a[] = new int[]{2,5,7,9,12} , b[] = new int[] {1,2,4,5,7,11,12} , c[] = new int[25];
+		int a[] = new int[5]{2,5,7,9,12} , b[] = new int[7] {1,2,4,5,7,11,12} , c[] = new int[25];
+		
+		Scanner sc = new Scanner(System.in);
+
+		//for array a
+		for(int i=0;i<a.length;i++){
+			
+			try{
+				a[i] = sc.nextInt();
+
+			}catch(InputMisMatchException e){
+				System.out.println('Input Error: '+e.getMessage());
+			}
+
+		}
+
 		SortArray sa = new SortArray();
 		sa.sortArray(a,b,c);
 	}  
