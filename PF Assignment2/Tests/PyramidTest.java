@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class PyramidTest {
     
     enum Type{NUMBER, SPACE};
-    // {Input 1, Input 2, Expected Output};
+    // {Type of Function to use the given values, Input 1, Input 2, Expected Output};
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -36,15 +36,14 @@ public class PyramidTest {
     @Test
     public void testSpace() {
 	Assume.assumeTrue(type == Type.SPACE);
-	PyramidClass pc = new PyramidClass();
+	Pyramid pc = new Pyramid();
         assertEquals(fExpected, pc.space(fInput_1, fInput_2));
     }
 
     @Test
     public void testNumber() {
 	Assume.assumeTrue(type == Type.NUMBER);
-	PyramidClass pc = new PyramidClass();
+	Pyramid pc = new Pyramid();
         assertEquals(fExpected, pc.number(fInput_1, fInput_2));
     }
-
 }

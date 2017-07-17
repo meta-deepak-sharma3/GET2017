@@ -11,10 +11,9 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class Pattern2Test {
-    
+public class HalfPyramidTest {
     enum Type{NUMBER, SPACE};
-    // {Input 1, Input 2, Expected Output};
+    // {Type of Function To use the given values, Input 1, Input 2, Expected Output};
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -36,15 +35,14 @@ public class Pattern2Test {
     @Test
     public void testSpace() {
 	Assume.assumeTrue(type == Type.SPACE);
-	Pattern2Class pc = new Pattern2Class();
+	HalfPyramid pc = new HalfPyramid();
         assertEquals(fExpected, pc.space(fInput_1, fInput_2));
     }
 
     @Test
     public void testNumber() {
 	Assume.assumeTrue(type == Type.NUMBER);
-	Pattern2Class pc = new Pattern2Class();
+	HalfPyramid pc = new HalfPyramid();
         assertEquals(fExpected, pc.number(fInput_1, fInput_2));
     }
-
 }
