@@ -2,7 +2,7 @@ import java.lang.Math;
 import java.util.Scanner;
 
 public class HalfPyramidMain{
-
+	//Main Function
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		int n=0;
@@ -16,7 +16,6 @@ public class HalfPyramidMain{
 		
 		//Printing of HalfPyramid
 		for (int row=1;row<=n;row++){
-			
 			HalfPyramid pc = new HalfPyramid();
 			System.out.println(pc.space(row, n)+pc.number(row, n));			
 		}	

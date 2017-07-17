@@ -2,7 +2,7 @@ import java.lang.Math;
 import java.util.Scanner;
 
 public class PyramidMain{
-
+	//Main Function
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		int n = 1;
@@ -21,17 +21,17 @@ public class PyramidMain{
 }
 
 class Pyramid{
-
+	//Returns string of spaces
 	String space(int row, int n){	
 		String spaceString = "";
 		
 		for (int i=1;i<=Math.abs(n-row);i++){
 			spaceString = spaceString.concat(" ");			
-		}
+		}	
 		
 		return spaceString;
 	}
-
+	//Returns string of numbers
 	String number(int row, int n){
 		String numberString = "";
 		int i;
