@@ -40,6 +40,10 @@ class Participant{
 				String textResponse = sc.nextLine();
 				questionWithResponse.put(questions[i], new String[]{textResponse});
 			}else if(questions[i].type=="Single Select"){
+				System.out.print("Available Options: ");
+				for(int j=0;j<questions[i].getAvailableOptions().length;i++){
+					System.out.println(questions[i].getAvailableOptions()[j]);
+				}
 				String singleResponse;
 				do{
 					System.out.println("Enter your single select repsonse");
@@ -48,16 +52,20 @@ class Participant{
 				questionWithResponse.put(questions[i], new String[]{singleResponse});
 			}else{
 				String multipleResponseList[];
+				System.out.print("Available Options: ");
+				for(int j=0;j<questions[i].getAvailableOptions().length;i++){
+					System.out.println(questions[i].getAvailableOptions()[j]);
+				}
 				boolean isPresent = true;
 				do{
 					System.out.println("Enter your Multiple select repsonse: format: Option1/Option2/Option3");
 					String multipleResponse = sc.nextLine();
 					multipleResponseList = multipleResponse.split("/");
-					for(i=0;i<multipleResponseList.length;i++){
-						multipleResponseList[i].trim();
+					for(int j=0;j<multipleResponseList.length;j++){
+						multipleResponseList[j].trim();
 					}
-					for(i=0;i<multipleResponseList.length;i++){
-						if(!Arrays.asList(questions[i].getAvailableOptions()).contains(multipleResponseList[i]))
+					for(int j=0;i<multipleResponseList.length;j++){
+						if(!Arrays.asList(questions[i].getAvailableOptions()).contains(multipleResponseList[j]))
 							isPresent = false;
 					}
 				}while(!isPresent);
@@ -78,9 +86,9 @@ class Survey{
 			File file = new File("Input.txt");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			String line;
+			String line = "";
 			int count = 0;
-			while ((line = bufferedReader.readLine()) != null) {
+			while ((line = bufferedReader.readLine()) != null && line!="") {
 				Question question = new Question();
 				question.questionNumber = count+1;
 				String questionTypeOption = line.split(".")[1].trim();
@@ -150,8 +158,8 @@ class Report{
 				for (Participant participant: participants){
 					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question)[0], numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question)[0])+1);
 				}
-				for (int i=0;i<question.availableOptions.length;i++){
-					System.out.println(question.availableOptions[i]+" : "+numberOfStudentsWithAnswer.get(question.availableOptions[i]));
+				for (int j=0;j<question.availableOptions.length;j++){
+					System.out.println(question.availableOptions[j]+" : "+numberOfStudentsWithAnswer.get(question.availableOptions[j]));
 				}
 			}
 		}
@@ -167,9 +175,9 @@ class Report{
 				for(int i=0;i<participants.length;i++){
 					for(int j=0;j<question.getAvailableOptions().length;j++){
 						String[] responseList = participants[i].questionWithResponse.get(question);
-						if(Arrays.asList(responseList).contains(question.getAvailableOptions()[i])){
+						if(Arrays.asList(responseList).contains(question.getAvailableOptions()[j])){
 							participantNumber = participantNumber + " "+String.valueOf(participants[i])+",";
-							responseResultWithParticipantNumber.put(question.getAvailableOptions()[i], participantNumber);
+							responseResultWithParticipantNumber.put(question.getAvailableOptions()[j], participantNumber);
 							
 						}
 					}
