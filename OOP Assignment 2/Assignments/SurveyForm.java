@@ -1,3 +1,5 @@
+package Assignments;
+
 import java.util.*;
 import java.io.*;
 
@@ -25,23 +27,24 @@ class Participant{
 	Map<Object, String[]> questionWithResponse = new HashMap<Object, String[]>();
 
 	public Participant(){
-		this.questionWithResponse = Collections.<Object, String[]>emptyMap();
+		//this.questionWithResponse = Collections.<Object, String[]>emptyMap();
 	}	
 
 	public void askQuestion(){
 		Survey survey = new Survey();
+		//Question[] questions = new Question[survey.numOfQuestions];
 		Question[] questions = survey.getAllQuestionsOfSurvey();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the response of Survey Questions one by one");
 		for(int i=0;i<questions.length;i++){
 			System.out.println(questions[i].quest);
-			if(questions[i].type == "Text"){
+			if(questions[i].type.equals("Text")){
 				System.out.println("Enter your text repsonse");
 				String textResponse = sc.nextLine();
 				questionWithResponse.put(questions[i], new String[]{textResponse});
-			}else if(questions[i].type=="Single Select"){
+			}else if(questions[i].type.equals("Single Select")){
 				System.out.print("Available Options: ");
-				for(int j=0;j<questions[i].getAvailableOptions().length;i++){
+				for(int j=0;j<questions[i].getAvailableOptions().length;j++){
 					System.out.println(questions[i].getAvailableOptions()[j]);
 				}
 				String singleResponse;
@@ -53,7 +56,8 @@ class Participant{
 			}else{
 				String multipleResponseList[];
 				System.out.print("Available Options: ");
-				for(int j=0;j<questions[i].getAvailableOptions().length;i++){
+				for(int j=0;j<questions[i].getAvailableOptions().length;j++){
+					questions[i].getAvailableOptions()[j].trim();
 					System.out.println(questions[i].getAvailableOptions()[j]);
 				}
 				boolean isPresent = true;
@@ -64,8 +68,8 @@ class Participant{
 					for(int j=0;j<multipleResponseList.length;j++){
 						multipleResponseList[j].trim();
 					}
-					for(int j=0;i<multipleResponseList.length;j++){
-						if(!Arrays.asList(questions[i].getAvailableOptions()).contains(multipleResponseList[j]))
+					for(int k=0;k<multipleResponseList.length;k++){
+						if(!Arrays.asList(questions[i].getAvailableOptions()).contains(multipleResponseList[k]))
 							isPresent = false;
 					}
 				}while(!isPresent);
@@ -77,13 +81,14 @@ class Participant{
 	}	
 }
 
-class Survey{
+class Survey extends Question{
 	int numOfQuestions;
 	Question[] questions;
 	
 	public Survey(){
+		questions = new Question[100];
 		try {
-			File file = new File("Input.txt");
+			File file = new File("D:/GET2017Assignments/OOPs Assignment 2/src/Assignments/Input.txt");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line = "";
@@ -91,16 +96,16 @@ class Survey{
 			while ((line = bufferedReader.readLine()) != null && line!="") {
 				Question question = new Question();
 				question.questionNumber = count+1;
-				String questionTypeOption = line.split(".")[1].trim();
+				String questionTypeOption = line.split("\\.")[1].trim();
 				question.quest = questionTypeOption.split(",")[0].trim();
 				question.type =  questionTypeOption.split(",")[1].trim();
-				if (question.type == "Single Select" || question.type == "Multiple Select"){
-					String availableOptionsWithBracket = questionTypeOption.split(",")[2].trim();  // for choice type of 																question
+				if (question.type.equals("Single Select") || question.type.equals("Multi Select")){
+					String availableOptionsWithBracket = questionTypeOption.split(",")[2].trim();  // for choice type of question
 					question.availableOptions = availableOptionsWithBracket.substring(1,availableOptionsWithBracket.length()-1).split("/");
 				}else{
 					question.availableOptions = new String[]{""};       // for text type of question
 				}
-	
+				System.out.println(question.quest);
 				questions[count] = question;
 				count++;
 			}
@@ -112,7 +117,7 @@ class Survey{
 	}
 
 	public Question[] getAllQuestionsOfSurvey(){
-		return this.questions;
+		return Arrays.copyOfRange(this.questions, 0, numOfQuestions);
 	}
 	
 }
@@ -142,24 +147,23 @@ class Question{
 	}
 }
 
-class Report{
+// Report Class extends Survey as they both have same Questions field.
+class Report extends Survey{
 	//used to view report1 and report two
 	public void reportOne(Participant[] participants){
-		Survey survey = new Survey();
-		Question[] questions = survey.getAllQuestionsOfSurvey();
-		
+		Question[] questions = super.getAllQuestionsOfSurvey();
 		for(Question question: questions){
-			if(question.getType() == "Single Select"){
+			if(question.getType().equals("Single Select")){
 				System.out.println(question.getQuestion());
 				Map<String, Integer> numberOfStudentsWithAnswer = new HashMap<String, Integer>();
 				for (int i=0;i<question.availableOptions.length;i++){
 					numberOfStudentsWithAnswer.put(question.availableOptions[i], 0);
 				}
 				for (Participant participant: participants){
-					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question)[0], numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question)[0])+1);
+					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question)[0], new Integer(numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question)[0])+1));
 				}
 				for (int j=0;j<question.availableOptions.length;j++){
-					System.out.println(question.availableOptions[j]+" : "+numberOfStudentsWithAnswer.get(question.availableOptions[j]));
+					System.out.println(question.availableOptions[j]+" : "+numberOfStudentsWithAnswer.get(question.availableOptions[j])/participants.length);
 				}
 			}
 		}
@@ -169,7 +173,7 @@ class Report{
 		Survey survey = new Survey();
 		Question[] questions = survey.getAllQuestionsOfSurvey();
 		for(Question question: questions){
-			if(question.getType() == "Multiple Select"){
+			if(question.getType().equals("Multi Select")){
 				Map<String, String> responseResultWithParticipantNumber = new HashMap<String, String>();
 				String participantNumber = "Participant";	
 				for(int i=0;i<participants.length;i++){
@@ -177,7 +181,7 @@ class Report{
 						String[] responseList = participants[i].questionWithResponse.get(question);
 						if(Arrays.asList(responseList).contains(question.getAvailableOptions()[j])){
 							participantNumber = participantNumber + " "+String.valueOf(participants[i])+",";
-							responseResultWithParticipantNumber.put(question.getAvailableOptions()[j], participantNumber);
+							responseResultWithParticipantNumber.put(question.getAvailableOptions()[j], new String(participantNumber));
 							
 						}
 					}
@@ -206,23 +210,3 @@ class Report{
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
