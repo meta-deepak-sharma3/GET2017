@@ -126,7 +126,7 @@ class Survey extends Question{
 	
 }
 
-class Question{
+class Question implements Comparable<Question>{
 	int questionNumber;  //should be unique.
 	String quest;
 	String type;
@@ -148,6 +148,11 @@ class Question{
 
 	public String[] getAvailableOptions(){
 		return this.availableOptions;
+	}
+	@Override
+	public int compareTo(Question compareQuestion) {
+		// TODO Auto-generated method stub
+		return this.quest.compareToIgnoreCase(compareQuestion.quest);
 	}
 }
 
