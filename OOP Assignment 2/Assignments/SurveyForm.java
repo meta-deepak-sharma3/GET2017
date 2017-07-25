@@ -7,6 +7,7 @@ public class SurveyForm{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		int numberOfStudents = 1;
+		System.out.println("Enter the number of students");
 		try{
 			numberOfStudents = sc.nextInt();
 		}catch(InputMismatchException e){
@@ -15,6 +16,7 @@ public class SurveyForm{
 		Participant[] participants = new Participant[numberOfStudents];
 		for(int i=0;i<numberOfStudents;i++){
 			participants[i] = new Participant();
+			participants[i].id = i+1;
 			participants[i].askQuestion();
 		}
 		Report rp = new Report();
@@ -24,9 +26,11 @@ public class SurveyForm{
 	}
 }
 class Participant{
-	Map<Object, String[]> questionWithResponse = new HashMap<Object, String[]>();
+	int id;
+	Map<Integer, String[]> questionWithResponse = new HashMap<Integer, String[]>();
 
 	public Participant(){
+		id = 0;
 		//this.questionWithResponse = Collections.<Object, String[]>emptyMap();
 	}	
 
@@ -41,7 +45,7 @@ class Participant{
 			if(questions[i].type.equals("Text")){
 				System.out.println("Enter your text repsonse");
 				String textResponse = sc.nextLine();
-				questionWithResponse.put(questions[i], new String[]{textResponse});
+				questionWithResponse.put(questions[i].questionNumber, new String[]{textResponse});
 			}else if(questions[i].type.equals("Single Select")){
 				System.out.print("Available Options: ");
 				for(int j=0;j<questions[i].getAvailableOptions().length;j++){
@@ -52,7 +56,7 @@ class Participant{
 					System.out.println("Enter your single select repsonse");
 					singleResponse = sc.nextLine().trim();
 				}while(!Arrays.asList(questions[i].getAvailableOptions()).contains(singleResponse));
-				questionWithResponse.put(questions[i], new String[]{singleResponse});
+				questionWithResponse.put(questions[i].questionNumber, new String[]{singleResponse});
 			}else{
 				String multipleResponseList[];
 				System.out.print("Available Options: ");
@@ -73,7 +77,7 @@ class Participant{
 							isPresent = false;
 					}
 				}while(!isPresent);
-				questionWithResponse.put(questions[i], multipleResponseList);
+				questionWithResponse.put(questions[i].questionNumber, multipleResponseList);
 			}
 
 		}
@@ -160,7 +164,7 @@ class Report extends Survey{
 					numberOfStudentsWithAnswer.put(question.availableOptions[i], 0);
 				}
 				for (Participant participant: participants){
-					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question)[0], new Integer(numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question)[0])+1));
+					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question.questionNumber)[0], new Integer((numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question.questionNumber)[0])+1)/participants.length)*100);
 				}
 				for (int j=0;j<question.availableOptions.length;j++){
 					System.out.println(question.availableOptions[j]+" : "+numberOfStudentsWithAnswer.get(question.availableOptions[j])/participants.length);
@@ -178,9 +182,9 @@ class Report extends Survey{
 				String participantNumber = "Participant";	
 				for(int i=0;i<participants.length;i++){
 					for(int j=0;j<question.getAvailableOptions().length;j++){
-						String[] responseList = participants[i].questionWithResponse.get(question);
+						String[] responseList = participants[i].questionWithResponse.get(question.questionNumber);
 						if(Arrays.asList(responseList).contains(question.getAvailableOptions()[j])){
-							participantNumber = participantNumber + " "+String.valueOf(participants[i])+",";
+							participantNumber = participantNumber + " "+String.valueOf(participants[i].id)+",";
 							responseResultWithParticipantNumber.put(question.getAvailableOptions()[j], new String(participantNumber));
 							
 						}
