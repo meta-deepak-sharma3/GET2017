@@ -38,6 +38,9 @@ class Participant{
 		Survey survey = new Survey();
 		//Question[] questions = new Question[survey.numOfQuestions];
 		Question[] questions = survey.getAllQuestionsOfSurvey();
+		ArrayList<Question> questionList = new ArrayList<Question>(Arrays.asList(questions));
+		questionList = Collection.sort(questionList);
+		questions = questionList.toArray(new Question[questionList.size()]);
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the response of Survey Questions one by one");
 		for(int i=0;i<questions.length;i++){
@@ -152,7 +155,7 @@ class Question implements Comparable<Question>{
 	@Override
 	public int compareTo(Question compareQuestion) {
 		// TODO Auto-generated method stub
-		return this.quest.compareToIgnoreCase(compareQuestion.quest);
+		return this.quest.compareTo(compareQuestion.quest);
 	}
 }
 
@@ -169,10 +172,10 @@ class Report extends Survey{
 					numberOfStudentsWithAnswer.put(question.availableOptions[i], 0);
 				}
 				for (Participant participant: participants){
-					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question.questionNumber)[0], new Integer((numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question.questionNumber)[0])+1)/participants.length)*100);
+					numberOfStudentsWithAnswer.put(participant.questionWithResponse.get(question.questionNumber)[0], new Integer((numberOfStudentsWithAnswer.get(participant.questionWithResponse.get(question.questionNumber)[0])+1)));
 				}
 				for (int j=0;j<question.availableOptions.length;j++){
-					System.out.println(question.availableOptions[j]+" : "+numberOfStudentsWithAnswer.get(question.availableOptions[j])/participants.length);
+					System.out.println(question.availableOptions[j]+" : "+(numberOfStudentsWithAnswer.get(question.availableOptions[j])/participants.length)*100);
 				}
 			}
 		}
