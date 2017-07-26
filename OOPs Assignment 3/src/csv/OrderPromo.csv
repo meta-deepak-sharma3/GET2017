@@ -1,0 +1,4 @@
+Promotion Type,discount amount or percent,threshold
+OrderFixedAmountPromotion,100,1000
+OrderFixedAmountPromotion,200,2000
+OrderFixedPercentPromotion,10,1500

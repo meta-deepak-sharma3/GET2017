@@ -1,0 +1,15 @@
+###########################
+Your Order
+###########################
+Purchased Products: 
+Product : 1001 - Reebok Sneakers
+Cost : 1498.0(2 X ?749.0)
+
+Product : 1002 - Reebok T-Shirt (Black
+Cost : 958.0(2 X ?479.0)
+
+SubTotal : ?2456.0
+Product Level Discounts : ?343.7
+Order Level Discounts : ?200.0
+Total Discounts : ?543.7
+Total : ?1912.3000000000002
