@@ -110,6 +110,7 @@ a{
 }
 
 #right-content div{
+    display: inline-block;
     border: 4px outset gray;
     margin-bottom: 8px;
     padding: 9px;
