@@ -1,0 +1,159 @@
+a{
+	text-decoration: none;
+	color:inherit;
+}
+.header{
+	background-color: black;
+	width: 100%;
+	height: 20px;
+	padding-bottom: 25px;
+	display:flex;
+	
+}
+
+#heading_left{
+	flex:1;
+	color: white;
+	display: inline-block;
+	float: left;
+}
+
+#heading_right{
+	margin-right: 25px;
+	color: white;
+	display: inline-block;
+	float: right;
+}
+
+.middle_content{
+	width: 90%;
+	height: 200px;
+	padding: 100px 70% 300px 20%;
+	background-color: lightblue;
+	margin-right: 20px;
+}
+
+.middle_content_block{
+	margin-left: 5px;
+}
+
+#bold_block{
+	border-radius: 5px 5px 5px 5px;
+	color: white;
+	border: 2px solid white;
+	width: 500px;
+	height: 100px;
+	padding: 20px 0px 20px 170px;
+}
+.content{
+	text-align: center;
+	text-color: white;
+	width: 300px;
+	padding: 20px 20px 20px 150px;
+	white-space: nowrap;
+}
+
+#get_started_block{
+	background-color: white;
+	color: blue;
+	
+	padding: 20px 20px 20px 20px;
+	margin: 2px 2px 2px 2px;
+	width: 200px;
+	border-radius: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 180px;
+}
+
+#outer_text{
+	margin-left: 20%;
+	/*white-space: nowrap;*/
+}
+
+#outer_texts{
+	margin-left: 20%;
+}
+
+#column_content{
+	padding: 20px 0px 20px 0px;
+	display: flex;
+}
+
+.column_content{
+	height: 100px;
+	width: 100px;
+	margin-left: 50px;
+	flex: 1;
+
+}
+
+.icon {
+  position: relative;
+  /* Adjust these values accordingly */
+  top: 5px;
+  left: 5px;
+}
+
+#black_body_content{
+	background-color: darkgrey;
+	border-radius: 5px 5px 5px 5px;
+	height: 300px;
+	padding: 100px 100px 50px 100px;
+
+}
+
+#down_content{
+	padding-left: 200px;
+	display:flex;
+
+}
+
+#form_detail{
+	border-radius: 5px;
+    padding: 20px;
+	width: 40px;
+
+}
+
+input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+.down_content{
+	flex: 1;
+	padding-bottom: 20px;
+}
+
+.black_body_content{
+	display: inline-block;
+	margin: 0px 0px 0px 40px;
+	float: left;
+}
+
+#black_right_content{
+	float: right;
+}
+
+footer{
+	background-color: black;
+	color: white;
+	text-align: center;
+
+}
