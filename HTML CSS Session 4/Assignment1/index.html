@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML Session 2 Assignment</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	</head>
+	<body>
+		<header>
+			<h3>Contact Us Today !</h3>
+		</header>
+		<section>
+			<div id="form section">
+				<form action="" method="POST">
+					<div class="divTable">
+						<div class="divTableBody">
+							<div class="divTableRow">
+								<div class="divTableCell1">First Name</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-user" aria-hidden="true"></i></span>
+									<input type="text" placeholder="First Name" required pattern="[A-Za-z]{1,10}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Last Name</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-user" aria-hidden="true"></i></span>
+									<input type="text" placeholder="Last Name" required pattern="[A-Za-z]{1,10}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Email</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+									<input type="email" placeholder="Email Address" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Phone #</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+									<input type="text" placeholder="(845)555-1212"  required pattern="[0-9]{10}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Address</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-home" aria-hidden="true"></i></span>
+									<input type="text" placeholder="Address" required pattern="[A-Za-z]{1,100}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">City</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-home" aria-hidden="true"></i></span>
+									<input type="text" placeholder="City" required pattern="[A-Za-z]{1,10}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">State</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-list" aria-hidden="true"></i></span>
+									<select>
+										<option>Please Select</option>
+										<option>Maharastra</option>
+										<option>Uttar Pradesh</option>
+										<option>Rajasthan</option>
+										<option>Gujrat</option>
+									</select>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Zip Code</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-home" aria-hidden="true"></i></span>
+									<input type="text" placeholder="zipcode" required pattern="[0-9]{6}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">WebSite or Domain name</div>
+								<div class="divTableCell">
+									<span class="inputIcon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+									<input type="text" placeholder="WebSite or Domain name" required pattern="[A-Za-z]{1,10}"/>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Do you have Hosting?</div>
+								<div class="divTableCell">
+									<label><input type="radio" name="hosting" value="yes"/>Yes</label><br/>
+									<label><input type="radio" name="hosting" value="no"/>No</label>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">Project Discription</div>
+								<div class="divTableCell">
+									<span class="inputIcon" id="pencil"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+									<textarea placeholder="Project Discription" required  pattern="[A-Za-z]{1,400}"></textarea>
+								</div>
+							</div>
+							<div class="divTableRow">
+								<div class="divTableCell1">&nbsp;</div>
+								<div class="divTableCell">
+									<button type="submit" id="submit">Send &nbsp;<i class="fa fa-paper-plane"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,114 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+header{
+	padding:20px 40px;
+	background:#eee;
+}
+section{
+	padding:20px 10%;
+	background:#eee;
+}
+
+.divTable{
+	display: table;
+	width: 70%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead , .divTableCell1{
+	display: table-cell;
+	padding: 3px 10px;
+	vertical-align:middle;
+}
+
+.divTableCell1{
+	width:55%;
+	text-align:right;
+}
+
+.divTableCell{
+	width:45%;
+}
+
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+.inputIcon {
+padding: 6px 12px;
+font-size: 15px;
+width:20px;
+font-weight: 400;
+line-height: 1;
+color: #555;
+text-align: center;
+background-color: #eee;
+border: 1px solid #ccc;
+border-radius: 4px 0px 0px 4px;
+float: left;
+}
+
+input[type="text"], input[type="email"], input[type="number"]{
+height: 28px;
+width:85%;
+float: left;
+padding-left: 5px;
+border: solid 1px #ccc;
+border-radius: 0px 4px 4px 0px;
+}
+
+select{
+height: 30px;
+width:87%;
+float: left;
+padding-left: 5px;
+color: #555;
+border: solid 1px #ccc;
+border-radius: 0px 4px 4px 0px;
+}
+
+textarea{
+height: 35px;
+width:85%;
+float: left;
+padding-left: 5px;
+color: #555;
+border: solid 1px #ccc;
+border-radius: 0px 4px 4px 0px;
+}
+
+.inputIcon#pencil{
+	height:23px;
+}
+
+#submit{
+	width:30%;
+	height:30px;
+	color:white;
+	background-color:#1d4faf;
+	font-size:13px;
+	font-family:Corier new,sarif;
+	border:1px outset #1d4faf; 
+	border-radius:10px;
+}
+
+input:invalid, textarea:invalid{
+	border:1px outset red;
+}
