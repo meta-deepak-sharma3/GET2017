@@ -1,0 +1,27 @@
+.wrapper div{
+	height:100px;
+	width:100px;
+	background-color:red;
+	border:1px solid red;
+	margin:15px;
+	float:left;
+}
+
+.wrapper #box1:hover{
+transform: rotate(24deg);
+transition:0.5s;
+}
+.wrapper #box2:hover{
+transform: scale(2,3);
+transition:0.5s;
+
+}
+.wrapper #box3:hover{
+transform: skew(24deg);
+transition:0.5s;
+
+}
+.wrapper #box4:hover{
+transform: translate(24px, 20px);
+transition:0.5s;
+}

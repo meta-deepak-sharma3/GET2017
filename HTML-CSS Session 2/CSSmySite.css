@@ -105,8 +105,8 @@ a{
 #right-content{
     display: inline-block;
     float: left; 
-    width: 16%;
-    margin-left: 8px;
+    width: 20%;
+    margin: 8px;
 }
 
 #right-content div{
