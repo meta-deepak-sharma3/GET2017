@@ -18,14 +18,14 @@
 								<div class="divTableCell1">First Name</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-user" aria-hidden="true"></i></span>
-									<input type="text" placeholder="First Name" required pattern="[A-Za-z]{1,10}"/>
+									<input type="text" placeholder="First Name" maxlength="10" required pattern="[A-Za-z]{1,10}"/>
 								</div>
 							</div>
 							<div class="divTableRow">
 								<div class="divTableCell1">Last Name</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-user" aria-hidden="true"></i></span>
-									<input type="text" placeholder="Last Name" required pattern="[A-Za-z]{1,10}"/>
+									<input type="text" placeholder="Last Name" maxlength="10" required pattern="[A-Za-z]{1,10}"/>
 								</div>
 							</div>
 							<div class="divTableRow">
@@ -39,21 +39,21 @@
 								<div class="divTableCell1">Phone #</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-									<input type="text" placeholder="(845)555-1212"  required pattern="[0-9]{10}"/>
+									<input type="text" placeholder="Mobile..."  required pattern="[0-9]{10}"/>
 								</div>
 							</div>
 							<div class="divTableRow">
 								<div class="divTableCell1">Address</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-home" aria-hidden="true"></i></span>
-									<input type="text" placeholder="Address" required pattern="[A-Za-z]{1,100}"/>
+									<textarea placeholder="Address.." ></textarea>
 								</div>
 							</div>
 							<div class="divTableRow">
 								<div class="divTableCell1">City</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-home" aria-hidden="true"></i></span>
-									<input type="text" placeholder="City" required pattern="[A-Za-z]{1,10}"/>
+									<input type="text" placeholder="City" required pattern="[A-Za-z]{1,20}"/>
 								</div>
 							</div>
 							<div class="divTableRow">
@@ -73,14 +73,14 @@
 								<div class="divTableCell1">Zip Code</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-home" aria-hidden="true"></i></span>
-									<input type="text" placeholder="zipcode" required pattern="[0-9]{6}"/>
+									<input type="text" placeholder="zipcode" maxlength="6" required pattern="[0-9]{6}"/>
 								</div>
 							</div>
 							<div class="divTableRow">
 								<div class="divTableCell1">WebSite or Domain name</div>
 								<div class="divTableCell">
 									<span class="inputIcon"><i class="fa fa-globe" aria-hidden="true"></i></span>
-									<input type="text" placeholder="WebSite or Domain name" required pattern="[A-Za-z]{1,10}"/>
+									<input type="text" placeholder="WebSite or Domain name" required pattern="[A-Za-z.]{1,10}"/>
 								</div>
 							</div>
 							<div class="divTableRow">
@@ -94,7 +94,7 @@
 								<div class="divTableCell1">Project Discription</div>
 								<div class="divTableCell">
 									<span class="inputIcon" id="pencil"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-									<textarea placeholder="Project Discription" required  pattern="[A-Za-z]{1,400}"></textarea>
+									<textarea placeholder="Project Discription"></textarea>
 								</div>
 							</div>
 							<div class="divTableRow">
