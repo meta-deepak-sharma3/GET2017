@@ -71,8 +71,10 @@ function limitText(ref,iLength) {
 function display(){
 	var text = document.contact_form.select_city.value;
 	var textarea = document.getElementById('city_description');
-	textarea.value = '';
 	if(text!="--Select--"){
+		textarea.style.display = 'block';
 		textarea.value = 'You have chosen: '+ text;
+	}else{
+		textarea.style.display = 'none';
 	}
 }
