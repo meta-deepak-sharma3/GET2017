@@ -29,7 +29,7 @@ function validate_form(){
 	//email validation
 	var atposition=email.indexOf("@");  
 	var dotposition=email.lastIndexOf(".");  
-	if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
+	if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length){
 		list_of_errors[count++] = 'Error '+(count)+' :Enter a valid e-mail address.';
 		document.contact_form.Email.focus();
 		//alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);    
