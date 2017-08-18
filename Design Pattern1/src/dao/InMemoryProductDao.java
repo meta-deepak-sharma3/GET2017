@@ -14,6 +14,17 @@ import model.ProductVo;
 public class InMemoryProductDao implements BaseDao, ProductDao {
 	public static HashMap<Integer, ProductVo> productMap = new HashMap<Integer, ProductVo>();
 	static List<CartVo> cartItems = new ArrayList<CartVo>();
+	private BaseDao basedao = null;
+	
+	private InMemoryProductDao(){}
+	
+	@Override
+	public static BaseDao getInstance(){
+		if(baseDao == null){
+			baseDao = new BaseDao();
+		}
+		return baseDao;
+	}
 
 	@Override
 	public ProductVo getProduct(int productId) {
