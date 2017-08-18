@@ -12,7 +12,7 @@ public class FileDao implements BaseDao, ProductDao {
 	private BaseDao baseDao = null;
 
 	@Override
-	public BaseDao getInstance(){
+	public static BaseDao getInstance(){
 		if(baseDao == null){
 			baseDao = new BaseDao();
 		}
