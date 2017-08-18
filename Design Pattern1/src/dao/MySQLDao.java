@@ -10,6 +10,17 @@ import model.ProductVo;
  * For future use if the database is in MySQL.
  */
 public class MySQLDao implements BaseDao, ProductDao {
+	private BaseDao baseDao = null;
+	
+	private MySQLDao(){}
+
+	@Override
+	public BaseDao getInstance(){
+		if(baseDao == null){
+			baseDao = new BaseDao();
+		}
+		return baseDao;	
+	}
 
 	@Override
 	public ProductVo getProduct(int productId) {
