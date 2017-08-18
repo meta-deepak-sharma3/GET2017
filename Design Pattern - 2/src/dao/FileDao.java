@@ -9,7 +9,7 @@ import model.Product;
  */
 public class FileDao implements BaseDao, ProductDao {
 	
-	private BaseDao baseDao = null;
+	private static BaseDao baseDao = null;
 
 	@Override
 	public static BaseDao getInstance(){
