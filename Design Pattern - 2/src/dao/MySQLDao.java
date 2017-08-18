@@ -10,7 +10,7 @@ import model.Product;
  */
 public class MySQLDao implements BaseDao, ProductDao {
 
-	private BaseDao baseDao = null;
+	private static BaseDao baseDao = null;
 	
 	private MySQLDao(){}
 
