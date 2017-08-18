@@ -19,11 +19,11 @@ public class ProductFactory {
 	public static BaseDao getInstance(String instance){
 		switch(instance){
 		case "InMemoryProductDao":
-			return new InMemoryProductDao();
+			return (InMemoryProductDao)InMemoryProductDao.getInstance();
 		case "MySQLDao":
-			return new MySQLDao();
+			return (MySQLDao)MySQLDao.getInstance();
 		case "FileDao":
-			return new FileDao();
+			return (FileDao)FileDao.getInstance();
 		default:
 			return null;
 		}
