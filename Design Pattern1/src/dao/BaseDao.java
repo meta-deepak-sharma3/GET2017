@@ -10,4 +10,5 @@ public interface BaseDao {
 	public void addProduct(BaseEntity product);
 	public void updateProduct(BaseEntity product);
 	public void deleteProduct(BaseEntity product);
+	public BaseDao getInstance();
 }
