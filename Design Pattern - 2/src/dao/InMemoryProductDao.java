@@ -17,7 +17,7 @@ public class InMemoryProductDao implements BaseDao, ProductDao {
 	public static HashMap<Integer, Product> productMap = new HashMap<Integer, Product>();
 	static List<Cart> cartItems = new ArrayList<Cart>();
 
-	private BaseDao baseDao = null;
+	private static BaseDao baseDao = null;
 	
 	private InMemoryProductDao(){}
 
