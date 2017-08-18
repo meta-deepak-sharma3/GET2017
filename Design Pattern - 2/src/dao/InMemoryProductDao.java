@@ -22,7 +22,7 @@ public class InMemoryProductDao implements BaseDao, ProductDao {
 	private InMemoryProductDao(){}
 
 	@Override
-	public BaseDao getInstance(){
+	public static BaseDao getInstance(){
 		if(baseDao == null){
 			baseDao = new BaseDao();
 		}
