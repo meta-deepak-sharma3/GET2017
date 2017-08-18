@@ -15,7 +15,7 @@ public class MySQLDao implements BaseDao, ProductDao {
 	private MySQLDao(){}
 
 	@Override
-	public BaseDao getInstance(){
+	public static BaseDao getInstance(){
 		if(baseDao == null){
 			baseDao = new BaseDao();
 		}
