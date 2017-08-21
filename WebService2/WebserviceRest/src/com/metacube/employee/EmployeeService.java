@@ -14,7 +14,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /*
@@ -27,79 +26,80 @@ public class EmployeeService {
 	/*
 	*Method to get employee detail by their id
 	*GET Method
-	*url- https://localhost/RestWebservice/rest/employees/{id}
+	*url- https://localhost/WebserviceRest/rest/employees/{id}
 	*/
 	@GET
-	@Path("/{id}")
+	@Path("/{id: [0-10]+}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getEmployeeDetail(@PathParam("id") int id) {
+	public String getEmployeeDetail(@PathParam("id") int id) {
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
 		if(employeeDao.employeeArrayIsEmpty())
 			return null;
-		String output = employeeDao.getEmployeeDetails(id).toString();
-		return Response.status(200).entity(output).build();
+		return employeeDao.getEmployeeDetails(id).toString();
+		//return Response.status(200).entity(output).build();
 	}
 	
 	/*
 	*Method to get employee details by their name
 	*GET Method
-	*url- https://localhost/RestWebservice/rest/employees/{name}
+	*url- https://localhost/WebserviceRest/rest/employees/{name}
 	*/
 	@GET
 	@Path("/{name}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getEmployeeDetailByName(@PathParam("name") String name) {
+	public String getEmployeeDetailByName(@PathParam("name") String name) {
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
 		if(employeeDao.employeeArrayIsEmpty())
 			return null;
-		String output = employeeDao.getAllEmployeesByName(name).toString();
-		return Response.status(200).entity(output).build();
+		return employeeDao.getAllEmployeesByName(name).toString();
+		//return Response.status(200).entity(output).build();
 	}
 	
 	/*
 	*Method to get all the employee details 
 	* GET Method
-	*url- https://localhost/RestWebservice/rest/employees/	
+	*url- https://localhost/WebserviceRest/rest/employees/	
 	*/
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getEmployees() {
+	public String getEmployees() {
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
 		if(employeeDao.employeeArrayIsEmpty())
 			return null;
-		String output = employeeDao.getAllEmployees().toString();
-		return Response.status(200).entity(output).build();
+		return employeeDao.getAllEmployees().toString();
+		//return Response.status(200).entity(output).build();
 	}
 	
 	/*
 	*Method to create new employee
 	*POST Method 
-	*url- https://localhost/RestWebservice/rest/employees/create 
+	*url- https://localhost/WebserviceRest/rest/employees/create 
 	*/
 	@POST
 	@Path("/create")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response createEmployee(@Context HttpHeaders httpHeaders, JSONObject employee) throws Exception{
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createEmployee(@Context HttpHeaders httpHeaders, JSONObject employee){
+		System.out.println("InCreate");
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
-		String output = employeeDao.addEmployee(employee).toString();
-		return Response.status(200).entity(output).build();
+		return employeeDao.addEmployee(employee).toString();
+		//return Response.status(200).entity(output).build();
 	}
 	
 	/*
 	*Method to delete employee by its id.
 	* DELETE Method
-	*url- https://localhost/RestWebservice/rest/employees/delete/{id} 
+	*url- https://localhost/WebserviceRest/rest/employees/delete/{id} 
 	*/
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteUser(@PathParam("id") int id){
+	public String deleteUser(@PathParam("id") int id){
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
 		if(employeeDao.employeeArrayIsEmpty())
 			return null;
-		String output = employeeDao.deleteEmployee(id).toString();
-		return Response.status(200).entity(output).build(); 
+		return employeeDao.deleteEmployee(id).toString();
+		//return Response.status(200).entity(output).build(); 
 	}
 	
 }
