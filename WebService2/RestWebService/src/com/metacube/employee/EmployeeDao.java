@@ -56,6 +56,8 @@ public class EmployeeDao implements UserDao{
 	@Override
 	public JSONArray addEmployee(JSONObject employee) {
 		// TODO Auto-generated method stub
+		employee.putIfAbsent("id", id);
+		id++;
 		employeeArray.add(employee);
 		return employeeArray;
 	}
