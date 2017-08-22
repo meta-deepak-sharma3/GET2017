@@ -27,7 +27,7 @@ public class SingleLinkedList<E> implements List<E> {
 	// It add the element into link list by index position 
 	@Override
 	public boolean add(int index, E element) {
-		if (index > size()) {
+		if (index > size() || index<0) {
 			throw new IllegalArgumentException();
 		}
 		try {
@@ -145,7 +145,7 @@ public class SingleLinkedList<E> implements List<E> {
 		Node<E> node = first;
 		int index = 0;
 		while (node != null) {
-			array[index] = node.getElement();
+			array[index++] = node.getElement();
 			node = node.getNext();
 		}
 		return array;
