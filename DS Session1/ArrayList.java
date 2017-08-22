@@ -133,13 +133,14 @@ public class ArrayList<E> implements List<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public E remove(int index) {
-		if (index > size()) {
-			//throw new IllegalArgumentException();
+		if (index > size() || index<0) {
+			throw new IndexOutOfBoundException();
 		}
 		E removed = (E) this.Array[index];
 		for (int i = index; i <= size(); i++) {
 			this.Array[i] = this.Array[i + 1];
 		}
+		this.Array[size()+1] = null;
 		return removed;
 
 	}
