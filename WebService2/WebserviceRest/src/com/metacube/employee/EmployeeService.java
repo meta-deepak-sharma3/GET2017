@@ -1,6 +1,9 @@
 package com.metacube.employee;
 
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,7 +17,11 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.codehaus.jackson.map.annotate.JsonView;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import com.sun.jersey.json.impl.provider.entity.JSONObjectProvider;
 
 /*
  * Facade Class which will
@@ -29,7 +36,7 @@ public class EmployeeService {
 	*url- https://localhost/WebserviceRest/rest/employees/{id}
 	*/
 	@GET
-	@Path("/{id: [0-10]+}")
+	@Path("/getById/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public String getEmployeeDetail(@PathParam("id") int id) {
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
@@ -45,7 +52,7 @@ public class EmployeeService {
 	*url- https://localhost/WebserviceRest/rest/employees/{name}
 	*/
 	@GET
-	@Path("/{name}")
+	@Path("/getByName/{name}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public String getEmployeeDetailByName(@PathParam("name") String name) {
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
@@ -75,14 +82,21 @@ public class EmployeeService {
 	*POST Method 
 	*url- https://localhost/WebserviceRest/rest/employees/create 
 	*/
+	@SuppressWarnings("unchecked")
 	@POST
-	@Path("/create")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/createEmployee/{name},{age},{department}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String createEmployee(@Context HttpHeaders httpHeaders, JSONObject employee){
-		System.out.println("InCreate");
+	public String createEmployee(@PathParam("name") String name,
+		      @PathParam("age") String age,
+		      @PathParam("department") String department,
+		      @Context HttpServletResponse servletResponse) throws IOException, ParseException{
+		JSONObject employee = new JSONObject();
+		employee.put("name", name);
+		employee.put("age", age);
+		employee.put("department", department);
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
 		return employeeDao.addEmployee(employee).toString();
+		//return employeeDao.addEmployee((JSONObject)employee).toString();
 		//return Response.status(200).entity(output).build();
 	}
 	

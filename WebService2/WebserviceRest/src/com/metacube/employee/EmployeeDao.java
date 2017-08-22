@@ -7,7 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class EmployeeDao implements UserDao{
-	private static int id = 0;
+	private static int id = 1;
 	public JSONArray employeeArray;
 	private static EmployeeDao employeeDao = null;
 	private EmployeeDao() {}
@@ -21,6 +21,9 @@ public class EmployeeDao implements UserDao{
 	}
 	
 	public boolean employeeArrayIsEmpty() {
+		if(employeeArray == null) {
+			return true;
+		}
 		if(employeeArray.size() == 0) {
 			return true;
 		}
@@ -59,6 +62,9 @@ public class EmployeeDao implements UserDao{
 		// TODO Auto-generated method stub
 		employee.putIfAbsent("id", id);
 		id++;
+		if(employeeArray == null) {
+			employeeArray = new JSONArray();
+		}
 		employeeArray.add(employee);
 		FileUtility.getInstance().writeFile(employeeArray);
 		return employeeArray;
@@ -78,14 +84,14 @@ public class EmployeeDao implements UserDao{
 	
 	@Override
 	public JSONArray getAllEmployeesByName(String name) {
-		List<JSONObject> employeesWithName = new ArrayList<JSONObject>();
+		JSONArray employeesWithName = new JSONArray();
 		for(int i=0;i<employeeArray.size();i++) {
 			JSONObject obj = (JSONObject)employeeArray.get(i);
-			if(obj.get((String)"name") == name) {
+			if((obj.get("name").toString()).equals(name)) {
 				employeesWithName.add(obj);
 			}
 		}
-		return (JSONArray) employeesWithName;
+		return employeesWithName;
 	}
 
 }

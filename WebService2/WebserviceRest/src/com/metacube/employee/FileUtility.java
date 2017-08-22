@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.tomcat.jni.File;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -44,6 +45,7 @@ public class FileUtility {
 		try {
 			FileWriter file = new FileWriter(FILE_LOCATION);
 			file.write(employeeArray.toJSONString());
+			file.flush();
 			System.out.println("Successfully Updated Employees Detail to File...");
 		}catch (FileNotFoundException e) {
             e.printStackTrace();
