@@ -220,4 +220,12 @@ public class ArrayList<E> implements List<E> {
 			System.out.println((E) Array[i]);
 		}
 	}
+	
+	public void overwriteElement(int index, E element) {
+		// TODO Auto-generated method stub
+		if(index >= size() || index<0) {
+			throw new IllegalArgumentException();
+		}
+		Array[index] = element;
+	}
 }
