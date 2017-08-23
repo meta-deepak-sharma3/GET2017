@@ -18,7 +18,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.codehaus.jackson.map.annotate.JsonView;
+import org.codehaus.jettison.json.JSONString;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.sun.jersey.json.impl.provider.entity.JSONObjectProvider;
@@ -82,18 +84,13 @@ public class EmployeeService {
 	*POST Method 
 	*url- https://localhost/WebserviceRest/rest/employees/create 
 	*/
-	@SuppressWarnings("unchecked")
 	@POST
-	@Path("/createEmployee/{name},{age},{department}")
+	@Path("/createEmployee")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String createEmployee(@PathParam("name") String name,
-		      @PathParam("age") String age,
-		      @PathParam("department") String department,
-		      @Context HttpServletResponse servletResponse) throws IOException, ParseException{
-		JSONObject employee = new JSONObject();
-		employee.put("name", name);
-		employee.put("age", age);
-		employee.put("department", department);
+	public String createEmployee(@Context HttpHeaders httpHeaders, String employeeString) throws ParseException{
+		JSONParser parser = new JSONParser();
+		JSONObject employee = (JSONObject) parser.parse(employeeString);
 		EmployeeDao employeeDao = (EmployeeDao)EmployeeDao.getInstance();
 		return employeeDao.addEmployee(employee).toString();
 		//return employeeDao.addEmployee((JSONObject)employee).toString();

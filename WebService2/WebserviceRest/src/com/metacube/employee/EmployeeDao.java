@@ -7,7 +7,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class EmployeeDao implements UserDao{
-	private static int id = 1;
 	public JSONArray employeeArray;
 	private static EmployeeDao employeeDao = null;
 	private EmployeeDao() {}
@@ -60,8 +59,13 @@ public class EmployeeDao implements UserDao{
 	@Override
 	public JSONArray addEmployee(JSONObject employee) {
 		// TODO Auto-generated method stub
+		int id = 0;
+		if(employeeArray == null)
+			id = 1;
+		else
+			id = employeeArray.size()+1;
+		
 		employee.putIfAbsent("id", id);
-		id++;
 		if(employeeArray == null) {
 			employeeArray = new JSONArray();
 		}
