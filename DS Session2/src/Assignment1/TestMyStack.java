@@ -12,8 +12,15 @@ public class TestMyStack {
 	public void setUp() throws Exception {
 		stack = new MyStack<String>();
 	}
-
-	// Check the method of push and pop of stack
+	
+	//Check the method of push of stack
+	@Test
+	public void testPush() {
+		stack.push("C");
+		assertEquals("C", stack.peek());
+	}
+	
+	// Check the method of pop of stack
 	@Test
 	public void testPop(){
 		stack.push("A");

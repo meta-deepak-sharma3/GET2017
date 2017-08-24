@@ -5,6 +5,10 @@ import assignment1.SingleLinkedList;
 public class MyStack<E> {
 	SingleLinkedList<E> list;
 	
+	public MyStack() {
+		list = new SingleLinkedList<E>();
+	}
+	
 	//adds the element at first position
 	public void push(E element) {
 		list.add(0, element);

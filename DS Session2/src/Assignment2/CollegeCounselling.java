@@ -36,7 +36,7 @@ public class CollegeCounselling {
 		Map<Integer,Integer> assignedColleges = new HashMap<Integer,Integer>();
 		
 		int collegeSeatsIndex = 0;
-		
+		System.out.println(candidates.getFront());
 		while(collegeSeatsIndex < collegeSeats.size() && candidates.size() != 0){
 			int seats = collegeSeats.getElement(collegeSeatsIndex);
 			if(seats > 0){
@@ -44,7 +44,6 @@ public class CollegeCounselling {
 				assignedColleges.put(candidate, (collegeSeatsIndex+1));
 				--seats;
 				collegeSeats.overwriteElement(collegeSeatsIndex, seats);
-				collegeSeatsIndex = 0;
 			}else{
 				++collegeSeatsIndex;
 			}
@@ -66,7 +65,7 @@ public class CollegeCounselling {
 	// it creates the queue of the candidates 
 	public Queue<Integer> createQueueOfCandidates(){
 		// getting input from console 
-		int numberOfCandidates = getUserInput("Please enter valid number of candidates taking part in conselling");
+		int numberOfCandidates = getUserInput("Please enter valid number of candidates taking part in counselling");
 		// Queue of the candidates
 		Queue<Integer> candidates = new Queue<Integer>();
 		

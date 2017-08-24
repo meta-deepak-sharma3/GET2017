@@ -35,8 +35,7 @@ public class Queue<E> {
 	private void increaseCapacity() {
 		// TODO Auto-generated method stub
 		Object[] newQueue = new Object[queue.length*2+1];
-		System.arraycopy(queue, 0, newQueue, 0, queue.length);
-		rear = queue.length;
+		System.arraycopy(queue, 0, newQueue, 0, rear);
 		queue = newQueue;
 	}
 
@@ -44,15 +43,18 @@ public class Queue<E> {
 	 * Delete from front of the queue.
 	 */
 	@SuppressWarnings("unchecked")
-	public E dequeue() {
-		if(rear < 0) {
-			System.out.println("Empty Queue....");
-			return null;
+	public E dequeue(){
+		if(rear < 0 && front < 0) {
+			System.out.println("Empty Queue......");
+			System.exit(0);
 		}
 		E element = (E) queue[front];
-		Object[] newQueue = new Object[queue.length-1];
-		System.arraycopy(queue, 1, newQueue, 0, queue.length-1);
-		queue = newQueue;
+		
+		for(int i=0;i<rear-1;i++) {
+			queue[i] = queue[i+1];
+		}
+		queue[rear-1] = null;
+		rear--;
 		return element;
 	}
 	
@@ -60,7 +62,7 @@ public class Queue<E> {
 	 * clear all elements of queue and make queue empty.
 	 */
 	public void makeEmpty() {
-		for(int i=front;i<=rear;i++) {
+		for(int i=front;i<rear;i++) {
 			queue[i] = null;
 		}
 		queue = new Object[DEFAULT_SIZE];
@@ -73,6 +75,11 @@ public class Queue<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	public E getFront() {
+		if (front<0 && rear<0) {
+			System.out.println("Empty Queue");
+			System.exit(0);
+		}
+		
 		return (E) queue[front];
 	}
 
