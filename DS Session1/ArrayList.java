@@ -108,15 +108,19 @@ public class ArrayList<E> implements List<E> {
 	// it clear the all elements of the list
 	@Override
 	public void clear() {
-		Object[] newArray = new Object[5];
-		this.Array = newArray;
+		for(int i = 0;i < size();i++){
+			Array[i] = null;
+		}
+		
+		Array = new Object[5];
 	}
 
 	// it checks where the object contains in array or not
 	@Override
 	public boolean contains(E o) {
+		Comparator<E> c = new Comparator<E>();
 		for (int i = 0; i < size(); i++) {
-			if (o.equals(this.Array[i])) {
+			if (c.compareTo(o, (E)Array[i]) == 0) {
 				return true;
 			}
 		}
@@ -138,14 +142,14 @@ public class ArrayList<E> implements List<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public E remove(int index) {
-		if (index > size() || index<0) {
+		if (index > size()-1 || index<0) {
 			throw new IndexOutOfBoundException();
 		}
 		E removed = (E) this.Array[index];
-		for (int i = index; i <= size(); i++) {
+		for (int i = index; i < size()-1; i++) {
 			this.Array[i] = this.Array[i + 1];
 		}
-		this.Array[size()+1] = null;
+		this.Array[size()-1] = null;
 		return removed;
 
 	}
