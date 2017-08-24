@@ -62,6 +62,11 @@ public class ArrayList<E> implements List<E> {
 			k++;
 			i++;
 		}
+		while(j <= high){
+			Array[k] = sortedArray[j];
+			k++;
+			j++;
+		}
 	}
 
 	// to add an element in array
