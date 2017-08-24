@@ -4,7 +4,13 @@ public class DoublyLinkList<E> implements List<E> {
 
 	private Node<E> first;
 	private Node<E> last;
-	private int size = 0;
+	private int size;
+	
+	public DoublyLinkList(){
+		first = null;
+		last = null;
+		size = 0;
+	}
 
 	@Override
 	public boolean add(E element) {
