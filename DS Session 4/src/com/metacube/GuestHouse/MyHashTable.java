@@ -56,7 +56,7 @@ public class MyHashTable<K, V> {
 	}
 
 	private int getHash(K key) {
-		int hash = key.hashCode() % bucket.length+1;
+		int hash = key.hashCode() % bucket.length;
 		return hash;
 	}
 	
