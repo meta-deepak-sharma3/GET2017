@@ -1,4 +1,4 @@
-package com.metacube.com;
+package com.metacube.GuestHouse;
 
 public class Node<K,V> {
 	private K key;

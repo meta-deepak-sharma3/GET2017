@@ -1,5 +1,8 @@
 package com.metacube.GuestHouse;
 
+/*
+ * Value Object class for customer
+ */
 public class Customer {
 	private String custName;
 	private int custAge;

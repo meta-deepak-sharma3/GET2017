@@ -1,5 +1,11 @@
-package com.metacube.com;
+package com.metacube.GuestHouse;
 
+import java.util.*;
+
+/**
+ * Class to allocate rooms to guests
+ * 
+ */
 public class RoomAllocation {
 	
 
@@ -8,8 +14,8 @@ public class RoomAllocation {
 	/**
 	 * Constructor for {@link RoomAllocation}
 	 */
-	public RoomAllocation() {
-		roomMapping = new MyHashTable<Integer, Customer>();
+	public RoomAllocation(int totalRooms) {
+		roomMapping = new MyHashTable<Integer, Customer>(totalRooms);
 	}
 	
 	/**
@@ -24,7 +30,7 @@ public class RoomAllocation {
 		int age = scan.nextInt();
 		scan.nextLine();
 		Customer cust = new Customer(name, age);
-		room.roomMapping.insertCustInfo(age, cust);
+		room.roomMapping.insertValue(age, cust);
 	}
 	
 	/**
@@ -37,40 +43,51 @@ public class RoomAllocation {
 		int age = scan.nextInt();
 		scan.nextLine();
 		Customer cust = room.roomMapping.getValue(age);
-		System.out.println("Customer Name : "+cust.getCustName());
-		System.out.println("Customer Age : "+cust.getCustAge());
+		System.out.println("**********");
+		System.out.println("Customer Name : "+cust.getCustName()+" Customer Age : "+cust.getCustAge()+" Room No: "+room.roomMapping.getKey(age));
+		System.out.println("**********");
 	}
 	
 	public static void main(String args[]){
-		System.out.println("*********Welcome to The Guest House**********");
-		RoomAllocation room = new RoomAllocation();
 		Scanner scan = new Scanner(System.in);
+		System.out.println("*********Welcome to The Guest House**********");
+		System.out.println("Enter the number of rooms in the guest room:");
+		int totalRooms = getIntegerInput(scan);
+		RoomAllocation room = new RoomAllocation(totalRooms);
+		boolean flag = true;
 		do{
 			System.out.println("Enter your choice");
 			System.out.println("1: Insert Customer");
 			System.out.println("2: Get Customer Info");
 			System.out.println("3: exit");
-			int choice =  getIntegerInput();
-			if(choice == 1){
-				room.insertCust(scan, room);
-			}else if(choice == 2){
-				room.getCustInfo(scan, room);
-			}else if(choice == 3){
-				break;
-			}else{
-				System.out.println("\nEnter Correct Choice\n");
+			int choice =  getIntegerInput(scan);
+			switch(choice) {
+				case 1:
+					room.insertCust(scan,  room);
+					break;
+				case 2:
+					room.getCustInfo(scan,  room);
+					break;
+				case 3:
+					flag = false;
+					break;
+				default:
+					System.out.println("\nEnter Correct Choice\n");
 			}
-		}while(true);
+		}while(flag);
 	}
 	
-	private static int getIntegerInput() {
-		Scanner sc = new Scanner(System.in);
+	/**
+	 * getting integer input from the user
+	 * @return integer value.
+	 */
+	private static int getIntegerInput(Scanner scan) {
 		boolean flag = true;
 		int number=-1;
 		
 		do {
 			try{
-				number = sc.nextInt();
+				number = scan.nextInt();
 			}
 			catch(Exception e)
 			{
