@@ -2,8 +2,17 @@ package com.metacube.Assignment1;
 
 import java.util.*;
 
+/**
+ * class to find concordance of the string
+ * @author Deepak
+ *
+ */
 public class StringConcordance {
-	
+	/**
+	 * provides the String format of the input paramter Hashmap.
+	 * @param charIndicesMap
+	 * @return
+	 */
 	private String getStringFormat(Map<Character, List<Integer>> charIndicesMap) {
 		String result = "{";
 		for(char iterateCharacter: charIndicesMap.keySet()) {
@@ -13,6 +22,11 @@ public class StringConcordance {
 		return result;
 	}
 	
+	/**
+	 * method to find the concordance of the string
+	 * @param input: String
+	 * @return
+	 */
 	public String getStringConcordance(String input) {
 		int index;
 		boolean flag = true;
@@ -46,6 +60,10 @@ public class StringConcordance {
 		return getStringFormat(charIndicesMap);
 	}
 	
+	/**
+	 * main method
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the input for which you want concordance:");
