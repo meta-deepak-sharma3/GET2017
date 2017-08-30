@@ -16,20 +16,61 @@ public class SortedLinkedListTest {
 	public void setUp() throws Exception {
 		sortedLinkedList = new SortedLinkedList();
 	}
-
+	
+	/**
+	* Test method to test the head of the linkedlist
+	*/
 	@Test
-	public void testSortedLinkedList() {
+	public void testGetHead() {
 		Node<Integer> newNode1 = new Node<Integer>(2);
 		Node<Integer> newNode2 = new Node<Integer>(1);
 		Node<Integer> newNode3 = new Node<Integer>(4);
 		Node<Integer> newNode4 = new Node<Integer>(6);
 		
-		sortedLinkedList.insert(sortedLinkedList.getHead(), newNode1);
-		sortedLinkedList.insert(sortedLinkedList.getHead(), newNode2);
-		sortedLinkedList.insert(sortedLinkedList.getHead(), newNode3);
-		sortedLinkedList.insert(sortedLinkedList.getHead(), newNode4);
+		sortedLinkedList.insert(newNode1);
+		sortedLinkedList.insert(newNode2);
+		sortedLinkedList.insert(newNode3);
+		sortedLinkedList.insert(newNode4);
 		
-		assertEquals(2, (int)sortedLinkedList.getHead().getElement());
+		assertEquals(1, (int)sortedLinkedList.getHead().getElement());
+		
+	}
+	
+	/**
+	* Test method to test the last of the linkedlist
+	*/
+	@Test
+	public void testGetLast() {
+		Node<Integer> newNode1 = new Node<Integer>(2);
+		Node<Integer> newNode2 = new Node<Integer>(1);
+		Node<Integer> newNode3 = new Node<Integer>(4);
+		Node<Integer> newNode4 = new Node<Integer>(6);
+		
+		sortedLinkedList.insert(newNode1);
+		sortedLinkedList.insert(newNode2);
+		sortedLinkedList.insert(newNode3);
+		sortedLinkedList.insert(newNode4);
+		
+		assertEquals(6, (int)sortedLinkedList.getLast().getElement());
+		
+	}
+	
+	/**
+	* Test method to test the third element of the linkedlist
+	*/
+	@Test
+	public void testGetLast() {
+		Node<Integer> newNode1 = new Node<Integer>(2);
+		Node<Integer> newNode2 = new Node<Integer>(1);
+		Node<Integer> newNode3 = new Node<Integer>(4);
+		Node<Integer> newNode4 = new Node<Integer>(6);
+		
+		sortedLinkedList.insert(newNode1);
+		sortedLinkedList.insert(newNode2);
+		sortedLinkedList.insert(newNode3);
+		sortedLinkedList.insert(newNode4);
+		
+		assertEquals(4, (int)sortedLinkedList.getHead().getNext().getNext().getElement());
 		
 	}
 
