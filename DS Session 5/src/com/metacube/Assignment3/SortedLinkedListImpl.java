@@ -27,7 +27,7 @@ public class SortedLinkedListImpl {
 				case 1:
 					int element = getIntegerInput(sc);
 					Node<Integer> newNode = new Node<Integer>(element);
-					sortedLinkedList.insert(sortedLinkedList.getHead(), newNode);
+					sortedLinkedList.insert(newNode);
 					break;
 				case 2:
 					sortedLinkedList.printLinkedList();
