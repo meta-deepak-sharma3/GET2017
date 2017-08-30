@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title> Javascript Remove consecutive Duplicates </title>
+
+</head>
+	<body>
+		<h1> Example for Removing Duplicates for string </h1>
+		<b>Input String</b>: <input type="text" id='strToUse'>
+		<button type="button" id="submit" onclick="javascript: start()"> Enter </button>
+		<div id="textarea"></div>
+		<script>
+			function start(){
+				var input = document.getElementById('strToUse').value;
+				if(input==null || input==""){
+					alert('Enter any text');
+					return false;
+				}
+				document.getElementById("").innerHTML = removeConsDuplicate(input, input.length)
+				
+			}
+			function removeConsDuplicate(str, n){
+				var result = '';
+				result += str.charAt(0);
+				for(var i=1; i< str.length; i++){
+					if(str.charAt(i) != result.charAt(result.length-1)){
+						result += str.charAt(i);
+					}else{
+						while(str.charAt(i) == result.charAt(result.length-1)){
+							i++;
+						}
+						result = result.substr(0, result.length-1);
+						i--;
+					}
+				
+				}
+				return result;
+			}
+			
+		</script>
+
+	</body>
+</html>
