@@ -28,14 +28,10 @@ public class StringConcordance {
 	 * @return
 	 */
 	public String getStringConcordance(String input) {
-		int index;
-		boolean flag = true;
+		int numberOfSpaces = 0;
 		Map<Character, List<Integer>> charIndicesMap = new HashMap<Character, List<Integer>>();
-		for(int i=0;i<input.length();i++) {
-			if(!flag)
-				index = i-1;
-			else
-				index = i;
+		int length = input.length();
+		for(int i=0;i<length;i++) {
 			char character = input.charAt(i);
 			
 			if(character!=' ') {
@@ -44,10 +40,10 @@ public class StringConcordance {
 					charIndicesMap.put(character, posArray);
 				}
 				
-				charIndicesMap.get(character).add(index);
+				charIndicesMap.get(character).add(i-numberOfSpaces);
 				charIndicesMap.put(character, charIndicesMap.get(character));
 			}else {
-				flag = false;
+				numberOfSpaces += 1
 			}
 		}
 		
