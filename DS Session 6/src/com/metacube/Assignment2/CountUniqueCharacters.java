@@ -75,6 +75,7 @@ public class CountUniqueCharacters {
 					System.out.println("System Exiting");
 					break;
 				default:
+					System.out.println("Choice is not valid..");
 					flag = true;
 			}
 		}while(flag);
@@ -92,11 +93,12 @@ public class CountUniqueCharacters {
 		do {
 			try{
 				number = scan.nextInt();
+				flag = true;
 			}
 			catch(Exception e)
 			{
-				System.out.println(e.getMessage());
 				System.out.println("Please enter valid input");
+				scan.next();
 				flag = false;
 			}
 		}while(!flag || number<=0);
