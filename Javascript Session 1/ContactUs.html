@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title>Contact Us</title>
+		<script src="contact.js"></script>
+	</head>
+	<body>
+		<table width="80%" align="center">
+			<tr>
+				<td><img src="images/html5.png" width="50px"></td>
+				<td align="right">
+					<span id="home_display"></span>
+					<a href="">About</a>
+					<a href="">Product</a>
+					<a href="">Gallery</a>
+					<span id="contact_display"></span>
+				</td>
+			</tr>
+		</table>
+		<hr/>
+		<table align="center" width="80%">
+			<tr>
+				<td>
+					<img src="images/contact.jpg" alt="contact_page image" width="100%"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<form name="contact_form" action="" method="POST" onSubmit="return validate_form()">
+						<table width="50%">
+							<tr>
+								<td>Name</td>
+								<td>
+									<input type="text" name="person_name" />
+								</td>
+							</tr>
+							<tr>
+								<td>Email</td> 
+								<td>
+									<input type="text" name="Email">
+								</td>
+							</tr>
+							<tr>
+								<td>City </td>
+								<td>
+									<select name="select_city" onChange="display()" onFocus="this.selectedIndex=-1">
+										<option>--Select--</option>
+										<option>Jaipur</option>
+										<option>Agra</option>
+										<option>Mathura</option>
+										<option>Nagpur</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>City Description</td>
+								<td>
+									<textarea id="city_description" style="display: none;" readonly></textarea>
+								</td>
+							</tr>							
+							<tr>
+								<td>Organization<br/>name</td>
+								<td>
+									<input type="text" name="organization_name">
+								</td>
+							</tr> 
+							<tr>
+								<td>Contact<br/>Number</td>
+								<td>
+									<input type="text" name="contact_Number">
+								</td>
+							</tr>
+							<tr>
+								<td>Message</td>
+								<td>
+									<textarea name="message-box" OnBlur="limitText(this,250)"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="submit" name="submit" value="submit">
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<hr/>
+		<footer align="center"><label >&copy;CopyRight 2016-17 | All Rights Reserved | Metacube Training</label></footer>
+		<SCRIPT> 
+			var contact = document.getElementById("contact_display"); //Get span
+			a_contact = document.createElement('a');
+			a_contact.href =  'ContactUs.html'; 
+			a_contact.textContent = 'Contact Us'; // <a>INNER_TEXT</a>
+			contact.appendChild(a_contact); // Append the link to the span
+			
+			var home = document.getElementById("home_display");
+			a_home = document.createElement('a');
+			a_home.href =  'index.html'; 
+			a_home.textContent = 'Home'; // <a>INNER_TEXT</a>
+			home.appendChild(a_home); // Append the link to the span
+			
+		</SCRIPT>
+	</body>
+</html>
