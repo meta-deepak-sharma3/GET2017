@@ -24,7 +24,7 @@ public class BinarySearchTreeTest {
 	/**
 	 * Test method for testing non empty BST
 	 * and testing for left most Node in BST
-	 * while INORDER format.
+	 * i.e the smallest value in the array.
 	 */
 	@Test
 	public void testNonEmptyBinarySearchTree() {
