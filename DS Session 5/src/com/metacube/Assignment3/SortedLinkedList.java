@@ -44,6 +44,19 @@ public class SortedLinkedList {
 	}
 	
 	/**
+	 * @return: last of the linkedlist
+	 */
+	public Node<Integer> getLast(){
+		if(head == null)
+			return null;
+		Node<Integer> temp = head;
+		while(temp.getNext()!=null){
+			temp = temp.getNext();
+		}
+		return temp;
+	}
+	
+	/**
 	 * printing the linked list starting from the head
 	 *  till the end
 	 */
