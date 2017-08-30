@@ -14,21 +14,26 @@ public class SortedLinkedList {
 	}
 	
 	/**
+	*insertion of node n sorted linkedlist
+	* @param newNode
+	*/
+	public void insert(Node<Integer> newNode){
+		this.head = insertRec(this.getHead(), newNode);
+	}
+	
+	/**
 	 * insertion of node with recursion method.
 	 * @param currentNode
 	 * @param newNode
 	 */
-	public void insert(Node<Integer> currentNode, Node<Integer> newNode) {
-		Node<Integer> temp = currentNode;
-		if(temp == null) {
-			newNode.setNext(temp);
-			head = newNode;
-		}else if(temp.getNext() == null || temp.getNext().getElement() >= newNode.getElement()) {
-			newNode.setNext(temp.getNext());
-			temp.setNext(newNode);
-		}else {
-			insert(temp.getNext(), newNode);
-		}
+	public Node<Integer> insertRec(Node<Integer> currentNode, Node<Integer> newNode) {
+		if ( ( currentNode == null ) || !( currentNode.getElement() < newNode.getElement())){
+        		newNode.setNext(currentNode);
+			return newNode;
+    		}
+		
+    		currentNode.setNext(insertRec( currentNode.getNext(), newNode));
+    		return currentNode;
 	}
 	
 	/**
