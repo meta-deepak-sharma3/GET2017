@@ -30,7 +30,8 @@ public class StringConcordance {
 	public String getStringConcordance(String input) {
 		int numberOfSpace = 0;
 		Map<Character, List<Integer>> charIndicesMap = new HashMap<Character, List<Integer>>();
-		for(int i=0;i<input.length();i++) {
+		int length = input.length();
+		for(int i=0; i<length; i++) {
 			char character = input.charAt(i);
 			
 			if(character!=' ') {
