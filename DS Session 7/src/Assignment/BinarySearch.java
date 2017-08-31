@@ -9,7 +9,6 @@ package Assignment;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-
 public class BinarySearch {
 
 	/**
@@ -196,8 +195,7 @@ public class BinarySearch {
 				return array;
 
 			}catch(Exception ex){
-
-				System.out.println(ex.getMessage());
+				System.out.println("Please enter a valid number only.");
 			}
 		}
 	}
