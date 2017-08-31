@@ -17,7 +17,7 @@ public class SortedLinkedListImpl {
 		SortedLinkedList sortedLinkedList = new SortedLinkedList();
 		boolean flag = true;
 		do {	
-			System.out.println("Enter your valid choice:");
+			System.out.println("Enter your choice:");
 			System.out.println("1: Add element to Sorted Linked List");
 			System.out.println("2: Print the Sorted Linked List");
 			System.out.println("3: Exit");
@@ -25,18 +25,21 @@ public class SortedLinkedListImpl {
 		
 			switch(choice) {
 				case 1:
+					System.out.println("Enter the new Node value.");
 					int element = getIntegerInput(sc);
 					Node<Integer> newNode = new Node<Integer>(element);
 					sortedLinkedList.insert(newNode);
 					break;
 				case 2:
 					sortedLinkedList.printLinkedList();
+					System.out.println();
 					break;
 				case 3:
 					flag = false;
 					System.out.println("System Exiting");
 					break;
 				default:
+					System.out.println("Enter a valid choice");
 					flag = true;
 			}
 		}while(flag);
@@ -54,11 +57,15 @@ public class SortedLinkedListImpl {
 		do {
 			try{
 				number = scan.nextInt();
+				flag = true;
 			}
 			catch(Exception e)
 			{
-				System.out.println(e.getMessage());
+				System.out.println("1: Add element to Sorted Linked List");
+				System.out.println("2: Print the Sorted Linked List");
+				System.out.println("3: Exit");
 				System.out.println("Please enter valid input");
+				scan.next();
 				flag = false;
 			}
 		}while(!flag || number<=0);

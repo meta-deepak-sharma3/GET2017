@@ -59,7 +59,7 @@ public class SortedLinkedListTest {
 	* Test method to test the third element of the linkedlist
 	*/
 	@Test
-	public void testGetLast() {
+	public void testGetThirdNode() {
 		Node<Integer> newNode1 = new Node<Integer>(2);
 		Node<Integer> newNode2 = new Node<Integer>(1);
 		Node<Integer> newNode3 = new Node<Integer>(4);

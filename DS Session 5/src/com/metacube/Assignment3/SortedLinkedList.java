@@ -65,7 +65,7 @@ public class SortedLinkedList {
 		System.out.println();
 		if(temp != null) {
 			while(temp.getNext()!=null) {
-				System.out.println(temp.getElement()+"-->");
+				System.out.print(temp.getElement()+"-->");
 				temp = temp.getNext();
 			}
 			System.out.print(temp.getElement());
