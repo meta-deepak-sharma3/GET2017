@@ -1,49 +1,58 @@
 package com.metacube.Printer;
+
 /**
- *  This class contains heap operations
+ * The Heap class containing all the operations of heap.
  * @author Deepak
  *
  */
 public class MyHeap {
-	private int heapSize;
-	private int capacity;
-	private Job job[];
+	int heapSize;
+	int capacity;
+	Job job[];
 	
-	public MyHeap(int cap) {
+	/**
+	 * Parameterized Constructor.
+	 * @param cap
+	 */
+	MyHeap(int cap) {
 		heapSize = 0;
 		capacity = cap + 1;
-		job = new Job[cap];
+		job = new Job[capacity];
 	}
 	
 	/**
-	 * get the index of parent
+	 * get parent for the array
+	 * element 
 	 * @param position
 	 * @return
 	 */
-	public int parent(int position) {
-		return position-1 / 2;
+	int parent(int position) {
+		return position / 2;
 	}
 	
 	/**
-	 * get the index of left child
+	 * get left child for the array
+	 * element
 	 * @param position
 	 * @return
 	 */
-	public int left(int position) {
-		return 2 * position+1;
+	int left(int position) {
+		return 2 * position;
 	}
 	
 	/**
-	 * get right child index
+	 * get right child index 
+	 * for the array element
 	 * @param position
 	 * @return
 	 */
-	public int right(int position) {
-		return (2 * position + 2);
+	int right(int position) {
+		return (2 * position + 1);
 	}
 	
 	/**
-	 * swap the parent node with child.
+	 * swap the parentIndex element 
+	 * with childIndex element.
 	 * @param parentIndex
 	 * @param childIndex
 	 */
@@ -54,32 +63,37 @@ public class MyHeap {
 	}
 	
 	/**
-	 * This method will insert job in the heap according to its priority
-	 * @param name
-	 * @param priority
+	 * insert the priority based 
+	 * job in the heap
 	 */
-	void insert(String name, int priority) {
-		if (heapSize > capacity) {
+	boolean insert(String name, int priority) {
+		if (heapSize >= capacity) {
 			System.out.println("Heap OverFlow");
-			return;
+			return false;
 		}
 		Job newJob = new Job(name, priority);
 		if (heapSize == 0) {
 			job[++heapSize] = newJob;
-		}else {
-			job[++heapSize] = newJob;
+			return true;
+		}
+		else if (++heapSize != capacity) {
+			job[heapSize] = newJob;
 			int pos = heapSize;
 			while (pos != 1	&& job[parent(pos)].getPriority() < job[pos].getPriority()) {
 				swap(parent(pos), pos);
 				pos = parent(pos);
 			}
+			return true;
+		}
+		else {		
+			System.out.println("Heap OverFlow *******");
+			return false;
 		}
 	}
 	
 	/**
 	 * Switching root node with last node and then removing it 
 	 * and performing heapify again
-	 * @return Job Object
 	 */
 	public Job remove() {
 		if (heapSize == 0) {
@@ -103,8 +117,8 @@ public class MyHeap {
 		return firstNode;
 	}
 	
-	/**
-	 * heapify the heap
+	/** 
+	 * heapify the heap.
 	 * @param index
 	 */
 	void heapify(int index) {
@@ -119,9 +133,10 @@ public class MyHeap {
 		}
 		swap(index, larger);
 	}
+	
 	/**
-	 * String Equivalent of heap
-	 * @see java.lang.Object#toString()
+	 * method to return String format for
+	 * the object.
 	 */
 	public String toString() {
 		String result = "";
