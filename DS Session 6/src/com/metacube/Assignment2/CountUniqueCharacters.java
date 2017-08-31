@@ -36,7 +36,8 @@ public class CountUniqueCharacters {
 		    }
 
 		    int count = 0;
-		    for (int i = 0; i < isItThere.length; i++) {
+		    int length = isItThere.length;
+		    for (int i = 0; i < length; i++) {
 		        if (isItThere[i] == true){
 		            count++;
 		        }
