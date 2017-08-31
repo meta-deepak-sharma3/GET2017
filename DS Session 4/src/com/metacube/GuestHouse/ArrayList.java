@@ -109,12 +109,13 @@ public class ArrayList<E> implements List<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(int index, E element) {
+		int size = size();
 		try {
-			if (size() >= MAX / 2 + 1) {
+			if (size >= MAX / 2 + 1) {
 				increaseArraySize();
 			}
 			E temp;
-			for (int i = index; i <= size(); i++) {
+			for (int i = index; i <= size; i++) {
 				temp = (E) this.Array[i];
 				this.Array[i] = element;
 				element = temp;
@@ -141,7 +142,8 @@ public class ArrayList<E> implements List<E> {
 	 */
 	@Override
 	public boolean contains(E o) {
-		for (int i = 0; i < size(); i++) {
+		int size = size();
+		for (int i = 0; i < size; i++) {
 			if (o.equals(this.Array[i])) {
 				return true;
 			}
@@ -154,7 +156,8 @@ public class ArrayList<E> implements List<E> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		for (int i = 0; i < size(); i++) {
+		int size = size();
+		for (int i = 0; i < size; i++) {
 			if (this.Array[i] != null) {
 				return false;
 			}
@@ -170,14 +173,15 @@ public class ArrayList<E> implements List<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public E remove(int index) {
-		if (index > size() || index<0) {
+		int size = size();
+		if (index > size || index<0) {
 			throw new IndexOutOfBoundsException();
 		}
 		E removed = (E) this.Array[index];
-		for (int i = index; i <= size(); i++) {
+		for (int i = index; i <= size; i++) {
 			this.Array[i] = this.Array[i + 1];
 		}
-		this.Array[size()+1] = null;
+		this.Array[size+1] = null;
 		return removed;
 
 	}
@@ -215,7 +219,8 @@ public class ArrayList<E> implements List<E> {
 	public int removeByValue(E value) {
 		boolean flag = false;
 		int index = 0;
-		for (int i = 0; i < size(); i++) {
+		int size = size();
+		for (int i = 0; i < size; i++) {
 			if (this.Array[i] == value && !flag) {
 				index = i;
 				flag = true;
@@ -224,7 +229,7 @@ public class ArrayList<E> implements List<E> {
 				this.Array[i] = this.Array[i + 1];
 			}
 		}
-		if(index > size()){
+		if(index > size){
 			throw new IllegalArgumentException();
 		}
 		return index;
@@ -238,7 +243,8 @@ public class ArrayList<E> implements List<E> {
 	public void reverse() {
 		Object[] reverseArray = new Object[size()];
 		int index = 0;
-		for (int i = size() - 1; i >= 0; i--) {
+		int size = size();
+		for (int i = size - 1; i >= 0; i--) {
 			reverseArray[index++] = Array[i];
 		}
 		Array = reverseArray;
@@ -276,7 +282,8 @@ public class ArrayList<E> implements List<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	public void printArrayList() {
-		for (int i = 0; i < size(); i++) {
+		int size = size();
+		for (int i = 0; i < size; i++) {
 			System.out.println((E) Array[i]);
 		}
 	}
@@ -286,7 +293,8 @@ public class ArrayList<E> implements List<E> {
 	 */
 	public void overwriteElement(int index, E element) {
 		// TODO Auto-generated method stub
-		if(index >= size() || index<0) {
+		int size = size();
+		if(index >= size || index<0) {
 			throw new IllegalArgumentException();
 		}
 		Array[index] = element;
