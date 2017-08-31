@@ -37,16 +37,4 @@ public class EmployeeCollectionTest {
 		employeeCollection.sortByName();
 		assertEquals(fExpected, employeeCollection.employees.toString());
 	}
-	
-	/**
-	 * Test method for getting unique collection of employees
-	 */
-	@Test
-	public void testGetUniqueEmployees() {
-		String fExpected = "[Employee:Id= 1|Name= Amit|Address= 12-A Block, Employee:Id= 2|Name= Anil|Address= 13-A Block, Employee:Id= 3|Name= Nikhil|Address= 14-A Block, Employee:Id= 4|Name= Manu|Address= 15-A Block, Employee:Id= 5|Name= Dev|Address= 16-A Block, Employee:Id= 6|Name= Abhay|Address= 17-A Block]";
-		assertEquals(fExpected, employeeCollection.getUniqueEmployees().toString());
-	}
-	
-	
-
 }

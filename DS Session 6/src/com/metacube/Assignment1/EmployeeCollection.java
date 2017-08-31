@@ -3,11 +3,8 @@ package com.metacube.Assignment1;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
 
 /**
  * Class to perform operation on Employee Collection.
@@ -47,16 +44,16 @@ public class EmployeeCollection {
 	}
 	
 	/**
-	 * returns the unique collection of employees
-	 * on the basis of their ids
-	 * @return
+	 * 
+	 * @param id
+	 * @return employee from given id
 	 */
-	public Set<Employee> getUniqueEmployees(){
-		Map<Integer,Employee> uniqueEmployeeMapList = new HashMap<Integer,Employee>();
+	public Employee getEmployeeFromId(int id) {
 		for(Employee employee: employees) {
-			uniqueEmployeeMapList.put(employee.getId(), employee);
+			if(employee.getId() == id) {
+				return employee;
+			}
 		}
-		Set<Employee> uniqueAccs = new HashSet<Employee>(uniqueEmployeeMapList.values());    
-		return uniqueAccs;
+		return null;
 	}
 }
