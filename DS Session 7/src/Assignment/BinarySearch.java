@@ -8,6 +8,7 @@ package Assignment;
 // required imports to use inbuilt function to take user inputs
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class BinarySearch {
 
@@ -190,7 +191,9 @@ public class BinarySearch {
 
 					array[i] = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
 				}
-
+				// sorting the read array
+				Arrays.sort(array);
+				
 				// array is returned
 				return array;
 
