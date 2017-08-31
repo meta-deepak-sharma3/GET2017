@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class RoomAllocation {
 	
-
+	int numberOfCustomers;
 	MyHashTable<Integer, Customer> roomMapping;
 	
 	/**
@@ -16,6 +16,7 @@ public class RoomAllocation {
 	 */
 	public RoomAllocation(int totalRooms) {
 		roomMapping = new MyHashTable<Integer, Customer>(totalRooms);
+		numberOfCustomers = 0;
 	}
 	
 	/**
@@ -25,12 +26,13 @@ public class RoomAllocation {
 	 */
 	public void insertCust(Scanner scan , RoomAllocation room){
 		System.out.println("Enter your name");
-		String name = scan.nextLine();
+		String name = scan.next();
 		System.out.println("Enter your age");
-		int age = scan.nextInt();
+		int age = getIntegerInput(scan);
 		scan.nextLine();
 		Customer cust = new Customer(name, age);
 		room.roomMapping.insertValue(age, cust);
+		numberOfCustomers +=1;
 	}
 	
 	/**
@@ -41,7 +43,6 @@ public class RoomAllocation {
 	public void getCustInfo(Scanner scan , RoomAllocation room){
 		System.out.println("Enter the Customer age");
 		int age = scan.nextInt();
-		scan.nextLine();
 		Customer cust = room.roomMapping.getValue(age);
 		System.out.println("**********");
 		System.out.println("Customer Name : "+cust.getCustName()+" Customer Age : "+cust.getCustAge()+" Room No: "+room.roomMapping.getKey(age));
@@ -63,7 +64,11 @@ public class RoomAllocation {
 			int choice =  getIntegerInput(scan);
 			switch(choice) {
 				case 1:
-					room.insertCust(scan,  room);
+					if(room.numberOfCustomers >= totalRooms)
+						System.out.println("No Rooms available");
+					else
+						room.insertCust(scan,  room);
+					
 					break;
 				case 2:
 					room.getCustInfo(scan,  room);
@@ -88,11 +93,13 @@ public class RoomAllocation {
 		do {
 			try{
 				number = scan.nextInt();
+				flag = true;
 			}
 			catch(Exception e)
 			{
 				System.out.println(e.getMessage());
 				System.out.println("Please enter valid input");
+				scan.next();
 				flag = false;
 			}
 		}while(!flag || number<=0);
