@@ -1,8 +1,10 @@
 package com.metacube.Assignment2;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Utility Class for finding number of unique characters in given string
@@ -26,27 +28,14 @@ public class CountUniqueCharacters {
 	 * @return
 	 */
 	public int countUniqueChars(String input) {
-		int result = -1;
-		if(charCountMap.get(input)!=null)
-			result = charCountMap.get(input);
-		else {
-			boolean[] isItThere = new boolean[Character.MAX_VALUE];
-		    for (int i = 0; i < input.length(); i++) {
-		        isItThere[input.charAt(i)] = true;
-		    }
-
-		    int count = 0;
-		    int length = isItThere.length;
-		    for (int i = 0; i < length; i++) {
-		        if (isItThere[i] == true){
-		            count++;
-		        }
-		    }
-			result = count;
-			charCountMap.put(input, result);
+		Set<Character> uniqueChars = new HashSet<Character>();
+		int length = input.length();
+		for(int i=0; i<length; i++) {
+			if(Character.isLetter(input.charAt(i))) {
+				uniqueChars.add(input.charAt(i));
+			}
 		}
-		
-		return result;
+		return uniqueChars.size();
 	}
 	
 	/**
