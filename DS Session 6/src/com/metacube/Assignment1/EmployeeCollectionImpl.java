@@ -46,6 +46,9 @@ public class EmployeeCollectionImpl {
 				System.out.println("Enter the address for "+(i+1)+" Employee:");
 				String address = sc.next();
 				employeesCollection.employees.add(new Employee(id, name, address));
+			}else{
+				System.out.println("The employee with same id exists");
+				i--;
 			}
 		}
 		
